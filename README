@@ -1,0 +1,31 @@
+# AirlineReviewAnalyzer
+
+The `AirlineReviewAnalyzer` package provides tools to analyze airline customer reviews. This package allows users to clean and preprocess textual reviews, perform sentiment analysis, extract frequently used keywords, and visualize trends in ratings and feedback. It is specifically designed for airline companies, analysts, and researchers looking to gain actionable insights from customer data.
+
+## Overview
+
+Analyzing customer reviews helps airlines understand passenger sentiments, identify areas of improvement, and recognize strengths. This package automates the analysis process with modular functions that allow for:
+- Cleaning textual data (`clean_feedback()`).
+- Analyzing sentiment (`analyze_sentiment()`).
+- Summarizing airline ratings (`summarize_ratings()`).
+- Extracting common themes and keywords from feedback (`extract_keywords()`).
+- Visualizing trends in customer sentiment and ratings over time (`visualize_trends()`).
+
+The package assumes your data contains at least the following columns:
+- **Airline Name**
+- **Review**
+- **Overall_Rating**
+- **Review Date**
+
+If your dataset doesn't include these columns, preprocessing or manual adjustments will be required.
+
+## Installation
+
+Install directly from GitHub with the following command:
+
+```R
+# Install the devtools package if not already installed
+install.packages("devtools")
+
+# Install AirlineReviewAnalyzer from GitHub
+devtools::install_github("AzmyUSF/AirlineReviewAnalyzer")
