@@ -29,3 +29,37 @@ install.packages("devtools")
 
 # Install AirlineReviewAnalyzer from GitHub
 devtools::install_github("AzmyUSF/AirlineReviewAnalyzer")
+
+## Dataset Included: Airline_review.csv
+
+This dataset is included in the package and located in the `inst/extdata/` directory. It provides a detailed breakdown of passenger reviews for airlines, including ratings, feedback, and other attributes.
+
+### Columns:
+1. **X**: Unique review ID (integer).
+2. **Airline_Name**: Name of the airline (character).
+3. **Overall_Rating**: Overall rating of the airline (numeric).
+4. **Review_Title**: Title summarizing the review (character).
+5. **Review_Date**: Date the review was written (date).
+6. **Verified**: Whether the review is verified (`TRUE` or `FALSE`).
+7. **Review**: Full text of the review (character).
+8. **Aircraft**: Type of aircraft used for the flight (character).
+9. **Type.Of.Traveller**: Traveler type (e.g., "Solo Leisure") (character).
+10. **Seat.Type**: Class of the seat (e.g., "Economy Class") (character).
+11. **Route**: Flight route (e.g., "New York to London") (character).
+12. **Date.Flown**: Date the flight occurred (character).
+13. **Seat.Comfort**: Rating of seat comfort (1-5, numeric).
+14. **Cabin.Staff.Service**: Rating of cabin staff service (1-5, numeric).
+15. **Food...Beverages**: Rating of food and beverages (1-5, numeric).
+16. **Ground.Service**: Rating of ground service (1-5, numeric).
+17. **Inflight.Entertainment**: Rating of inflight entertainment (1-5, numeric).
+18. **Wifi...Connectivity**: Rating of inflight WiFi and connectivity (1-5, numeric).
+19. **Value.For.Money**: Rating of value for money (1-5, numeric).
+20. **Recommended**: Whether the passenger recommends the airline (`yes` or `no`) (character).
+
+### How to Access the Dataset
+To load and prepare the dataset for analysis, use the `load_and_prepare_data()` function included in the package:
+
+```R
+library(AirlineReviewAnalyzer)
+data <- load_and_prepare_data()
+head(data)
