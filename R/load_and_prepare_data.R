@@ -1,32 +1,27 @@
-#' Load and Prepare Airline Data
+#' Load and Prepare Data
 #'
-#' This function loads the airline review data, removes ordinal indicators from review dates, trims white space, and formats columns as required.
-#' @param file_path The path to the CSV file to be loaded.
-#' @return A cleaned data frame.
-#' @export
+#' This function loads the airline review dataset from a CSV file and prepares it for analysis.
+#' It assumes the `Review.Date` column has been pre-cleaned and converts it into a standard `Date` format.
+#' It also ensures `Overall_Rating` is numeric.
+#'
+#' @param file_path A string specifying the path to the CSV file.
+#' @return A data frame with prepared data.
+#' @examples
+#' file_path <- system.file("extdata", "Airline_review.csv", package = "AirlineReviewAnalyzer")
+#' data <- load_and_prepare_data(file_path)
 load_and_prepare_data <- function(file_path) {
-  # Load data from CSV
-  data <- read.csv(file_path, stringsAsFactors = FALSE)
-  
-  # Remove ordinal indicators and trim whitespace from the 'Review.Date' column
-  data$Review.Date <- gsub("(st|nd|rd|th)", "", data$Review.Date, ignore.case = TRUE)
-  data$Review.Date <- trimws(data$Review.Date)
-  
-  # Convert 'Review.Date' to Date format with additional checks
-  data$Review.Date <- tryCatch({
-    as.Date(data$Review.Date, format = "%d %B %Y")
-  }, warning = function(w) {
-    message("Warning during conversion: ", conditionMessage(w))
-    as.Date(NA)
-  }, error = function(e) {
-    message("Error during conversion: ", conditionMessage(e))
-    rep(NA, length(data$Review.Date))
-  })
-  
-  # Ensure 'Overall_Rating' is numeric
-  data$Overall_Rating <- suppressWarnings(as.numeric(data$Overall_Rating))
+  # Read the data from the CSV file
+  data <- read.csv(file_path)
+  print(head(data))  # Debug: Check initial read
 
-  # Return cleaned data
+  # Convert the Review.Date column to Date format
+  data$Review.Date <- as.Date(data$Review.Date, format = "%Y-%m-%d")  # Adjust format if needed
+  print(data$Review.Date)  # Debug: Check after conversion to Date
+
+  # Convert Overall_Rating to numeric
+  data$Overall_Rating <- as.numeric(data$Overall_Rating)
+  print(summary(data$Overall_Rating))  # Debug: Check Overall_Rating summary
+
+  # Return the prepared data
   return(data)
 }
-
