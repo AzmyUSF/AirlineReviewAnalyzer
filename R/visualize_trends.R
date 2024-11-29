@@ -13,7 +13,7 @@
 #' )
 #' visualize_trends(example_data)
 visualize_trends <- function(data) {
-  ggplot2::ggplot(data = data, ggplot2::aes(x = Review_Date, y = Overall_Rating, color = Airline_Name)) +
+  ggplot2::ggplot(data = data, ggplot2::aes(x = Review.Date, y = Overall_Rating, color = Airline_Name)) +
     ggplot2::geom_line() +
     ggplot2::facet_wrap(~ Airline_Name, scales = "free_y") +
     ggplot2::labs(
